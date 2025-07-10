@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 class Araba {
@@ -28,19 +29,18 @@ class Araba {
 
     }
 }
-
 public class Galeri{
-    static class Musteri {
-        int id;
-        String ad;
-        String soyad;
-
-        public Musteri(int id, String ad, String soyad) {
-            this.id = id;
-            this.ad = ad;
-            this.soyad = soyad;
-        }
-    }
+    //    static class Musteri {
+//        int id;
+//        String ad;
+//        String soyad;
+//
+//        public Musteri(int id, String ad, String soyad) {
+//            this.id = id;
+//            this.ad = ad;
+//            this.soyad = soyad;
+//        }
+//    }
     static class GaleriList {
         List<Araba> araba = new ArrayList<>();
         List<String> satisKayitlari = new ArrayList<>();
@@ -85,7 +85,7 @@ public class Galeri{
             System.out.print("Aranan marka: ");
             String markaAra = scanner.nextLine();
             for (Araba a : araba) {
-                if (a.marka.contains(markaAra)) {
+                if (a.marka.toLowerCase().contains(markaAra)) {
                     System.out.println(a);
                     return;
                 }
@@ -117,33 +117,29 @@ public class Galeri{
         }
     }
     public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            GaleriList galeri = new GaleriList();
-            int secim;
-            do {
-                System.out.println("\n==== Galeri Yönetim Sistemi ====");
-                System.out.println("1. Arabaları Listele");
-                System.out.println("2. Araba Satın Al");
-                System.out.println("3. Satışları Görüntüle");
-                System.out.println("4. Fiyata Göre Filtrele");
-                System.out.println("5. Markaya Göre Ara");
-                System.out.println("6. Çıkış");
-                System.out.print("Seçiminizi girin: ");
-                secim = scanner.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        GaleriList galeri = new GaleriList();
+        int secim;
+        do {
+            System.out.println("\n==== Galeri Yönetim Sistemi ====");
+            System.out.println("1. Arabaları Listele");
+            System.out.println("2. Araba Satın Al");
+            System.out.println("3. Satışları Görüntüle");
+            System.out.println("4. Fiyata Göre Filtrele");
+            System.out.println("5. Markaya Göre Ara");
+            System.out.println("6. Çıkış");
+            System.out.print("Seçiminizi girin: ");
+            secim = scanner.nextInt();
 
-                switch (secim) {
-                    case 1 -> galeri.arabaListele();
-                    case 2 -> galeri.satinAl(scanner);
-                    case 3 -> galeri.satislar();
-                    case 4 -> galeri.fiyataGore(scanner);
-                    case 5 -> galeri.markayaGore(scanner);
-                    case 6 -> System.out.println("Programdan çıkılıyor...");
-                    default -> System.out.println("Geçersiz seçim.");
-                }
-            }while(secim !=6);
+            switch (secim) {
+                case 1 -> galeri.arabaListele();
+                case 2 -> galeri.satinAl(scanner);
+                case 3 -> galeri.satislar();
+                case 4 -> galeri.fiyataGore(scanner);
+                case 5 -> galeri.markayaGore(scanner);
+                case 6 -> System.out.println("Programdan çıkılıyor...");
+                default -> System.out.println("Geçersiz seçim.");
+            }
+        }while(secim !=6);
     }
-    }
-
-
-
-
+}
